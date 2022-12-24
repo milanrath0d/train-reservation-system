@@ -3,8 +3,6 @@ package com.milan.reservation.response;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalTime;
-
 /**
  * @author Milan Rathod
  */

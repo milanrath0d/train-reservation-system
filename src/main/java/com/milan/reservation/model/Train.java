@@ -1,12 +1,16 @@
 package com.milan.reservation.model;
 
+import com.vladmihalcea.hibernate.type.array.ListArrayType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.time.DayOfWeek;
 import java.time.LocalTime;
+import java.util.Set;
 
 /**
  * @author Milan Rathod
@@ -41,5 +45,8 @@ public class Train {
 
     private String destination;
 
-    private String frequency;
+    @Type(type = "com.vladmihalcea.hibernate.type.array.ListArrayType",
+        parameters = {@org.hibernate.annotations.Parameter(name = ListArrayType.SQL_ARRAY_TYPE, value = "text")})
+    @Column(name = "frequencies", columnDefinition = "text[]")
+    private Set<DayOfWeek> frequencies;
 }
