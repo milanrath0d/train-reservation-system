@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  * @author Milan Rathod
@@ -30,5 +31,5 @@ public class AddTrainRequest {
 
     private String destination;
 
-    private String frequency;
+    private List<String> frequencies;
 }

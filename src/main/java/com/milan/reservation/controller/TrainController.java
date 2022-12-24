@@ -50,7 +50,7 @@ public class TrainController {
                 .trainName(train.getTrainName())
                 .startTime(train.getStartTime().toString())
                 .endTime(train.getEndTime().toString())
-                .frequency(train.getFrequency())
+                .frequencies(train.getFrequencies().stream().map(Enum::toString).collect(Collectors.toList()))
                 .build())
             .collect(Collectors.toList());
     }

@@ -3,6 +3,8 @@ package com.milan.reservation.response;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author Milan Rathod
  */
@@ -18,7 +20,7 @@ public class TrainResponse {
 
     private String destinationStation;
 
-    private String frequency;
+    private List<String> frequencies;
 
     private String startTime;
 

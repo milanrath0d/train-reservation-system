@@ -8,7 +8,9 @@ import com.milan.reservation.request.AddTrainRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Milan Rathod
@@ -34,6 +36,11 @@ public class TrainService {
         return trainRepository.findAllByTrainNumberIn(trainNumbers);
     }
 
+    public Train findByTrainNumber(Long trainNumber) {
+        return trainRepository.findByTrainNumber(trainNumber)
+            .orElse(null);
+    }
+
     public void addTrain(AddTrainRequest addTrainRequest) {
         final String zoneCode = addTrainRequest.getZoneCode();
 
@@ -48,7 +55,7 @@ public class TrainService {
             .zone(zone)
             .startTime(addTrainRequest.getStartTime())
             .endTime(addTrainRequest.getEndTime())
-            .frequency(addTrainRequest.getFrequency())
+            .frequencies(addTrainRequest.getFrequencies().stream().map(DayOfWeek::valueOf).collect(Collectors.toSet()))
             .build();
 
         trainRepository.save(train);
