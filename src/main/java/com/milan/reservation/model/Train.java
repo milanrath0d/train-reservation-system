@@ -1,52 +1,81 @@
 package com.milan.reservation.model;
 
-import com.vladmihalcea.hibernate.type.array.ListArrayType;
+import com.milan.reservation.enums.TrainType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Type;
+import lombok.Setter;
+import lombok.ToString;
 
-import javax.persistence.*;
-import java.time.DayOfWeek;
+import jakarta.persistence.*;
 import java.time.LocalTime;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * Entity class for trains
+ *
  * @author Milan Rathod
  */
-@Data
+@Entity
+@Getter
+@Setter
+@ToString(exclude = {"zone", "coaches", "routes", "schedules"})
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "train")
-public class Train {
+@Table(name = "trains")
+public class Train extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long trainNumber;
+    @Column(name = "number", nullable = false, unique = true)
+    private Long number;
 
-    private String trainName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Enumerated(EnumType.STRING)
-    private TrainType trainType;
+    @Column(name = "type")
+    private TrainType type;
 
-    @JoinColumn(name = "zone", referencedColumnName = "id")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "zone_id")
     private Zone zone;
 
+    @Column(name = "start_time")
     private LocalTime startTime;
 
+    @Column(name = "end_time")
     private LocalTime endTime;
 
-    private String source;
+    @Column(name = "total_distance")
+    private Integer totalDistance;
 
-    private String destination;
+    @Column(name = "average_speed")
+    private Integer averageSpeed;
 
-    @Type(type = "com.vladmihalcea.hibernate.type.array.ListArrayType",
-        parameters = {@org.hibernate.annotations.Parameter(name = ListArrayType.SQL_ARRAY_TYPE, value = "text")})
-    @Column(name = "frequencies", columnDefinition = "text[]")
-    private Set<DayOfWeek> frequencies;
+    @Column(name = "has_pantry_car")
+    private boolean hasPantryCar;
+
+    @Column(name = "has_wifi")
+    private boolean hasWifi;
+
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+
+    @OneToMany(mappedBy = "train", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Coach> coaches = new ArrayList<>();
+
+    @OneToMany(mappedBy = "train", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Route> routes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "train", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<TrainSchedule> schedules = new ArrayList<>();
 }

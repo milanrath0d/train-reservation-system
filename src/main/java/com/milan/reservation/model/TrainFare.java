@@ -5,8 +5,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
 /**
  * @author Milan Rathod
@@ -15,17 +24,32 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "train_fare")
+@Entity
+@Table(name = "train_fares")
 public class TrainFare {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long class_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "train_id")
+    private Train train;
 
-    private int fromKm;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "class_id")
+    private Class trainClass;
 
-    private int toKm;
+    private String fromStation;
 
-    private int fare;
+    private String toStation;
+
+    private int distanceInKm;
+
+    private double baseFare;
+
+    private double dynamicFareMultiplier;
+    
+    @Column(name = "dynamic_pricing_enabled")
+    private boolean dynamicPricingEnabled;
 }
