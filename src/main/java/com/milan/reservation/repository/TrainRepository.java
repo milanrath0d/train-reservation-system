@@ -11,7 +11,7 @@ import java.util.Optional;
  */
 public interface TrainRepository extends JpaRepository<Train, Long> {
 
-    List<Train> findAllByTrainNumberIn(List<Long> trainNumbers);
+    List<Train> findAllByNumberIn(List<Long> numbers);
 
-    Optional<Train> findByTrainNumber(Long trainNumber);
+    Optional<Train> findByNumber(Long number);
 }

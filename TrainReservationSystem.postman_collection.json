@@ -1,0 +1,1395 @@
+{
+	"info": {
+		"_postman_id": "12345678-1234-1234-1234-123456789012",
+		"name": "Train Reservation System",
+		"description": "API collection for Train Reservation System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"securepassword123\",\n    \"phone\": \"9876543210\",\n    \"address\": \"123 Main St, City\",\n    \"dateOfBirth\": \"1990-01-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Trains",
+			"item": [
+				{
+					"name": "Search Trains",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/search?sourceStation=CSMT&destinationStation=NDLS&journeyDate=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"search"
+							],
+							"query": [
+								{
+									"key": "sourceStation",
+									"value": "CSMT"
+								},
+								{
+									"key": "destinationStation",
+									"value": "NDLS"
+								},
+								{
+									"key": "journeyDate",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Train By Number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/12951",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"12951"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trains By Route",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/route/CSMT-NDLS",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"route",
+								"CSMT-NDLS"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trains By Station",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/station/CSMT?date=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"station",
+								"CSMT"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Train Schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/12951/schedule",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"12951",
+								"schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Train Running Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/12951/running-status?date=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"12951",
+								"running-status"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Intermediate Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/12951/stations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"12951",
+								"stations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Journey Duration",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/12951/duration?sourceStation=CSMT&destinationStation=NDLS",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"12951",
+								"duration"
+							],
+							"query": [
+								{
+									"key": "sourceStation",
+									"value": "CSMT"
+								},
+								{
+									"key": "destinationStation",
+									"value": "NDLS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Connecting Trains",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/trains/connecting?sourceStation=CSMT&destinationStation=MAS&date=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"trains",
+								"connecting"
+							],
+							"query": [
+								{
+									"key": "sourceStation",
+									"value": "CSMT"
+								},
+								{
+									"key": "destinationStation",
+									"value": "MAS"
+								},
+								{
+									"key": "date",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coaches",
+			"item": [
+				{
+					"name": "Get All Coaches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Coach By Number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951/coach/A1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951",
+								"coach",
+								"A1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Coaches By Class",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951/class/1A",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951",
+								"class",
+								"1A"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Seats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951/coach/A1/seats",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951",
+								"coach",
+								"A1",
+								"seats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Berths",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951/coach/A1/berths",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951",
+								"coach",
+								"A1",
+								"berths"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Coach Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951/coach/A1/availability",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951",
+								"coach",
+								"A1",
+								"availability"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Coach Facilities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951/coach/A1/facilities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951",
+								"coach",
+								"A1",
+								"facilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Coach Occupancy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/coaches/train/12951/occupancy",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"coaches",
+								"train",
+								"12951",
+								"occupancy"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stations",
+			"item": [
+				{
+					"name": "Search Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations/search?query=Mumbai",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "Mumbai"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Station By Code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations/CSMT",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations",
+								"CSMT"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Trains By Station",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations/CSMT/trains",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations",
+								"CSMT",
+								"trains"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Station Facilities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations/CSMT/facilities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations",
+								"CSMT",
+								"facilities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Station Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations/CSMT/statistics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations",
+								"CSMT",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Connecting Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations/CSMT/connecting",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations",
+								"CSMT",
+								"connecting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stations/CSMT/active",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stations",
+								"CSMT",
+								"active"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"user123\",\n    \"trainNumber\": 12951,\n    \"classCode\": \"1A\",\n    \"sourceStation\": \"CSMT\",\n    \"destinationStation\": \"NDLS\",\n    \"journeyDate\": \"2023-12-25\",\n    \"passengers\": [\n        {\n            \"name\": \"John Doe\",\n            \"age\": 35,\n            \"gender\": \"MALE\",\n            \"seatPreference\": \"LOWER\",\n            \"berthPreference\": \"WINDOW\",\n            \"mealPreference\": \"VEG\"\n        },\n        {\n            \"name\": \"Jane Doe\",\n            \"age\": 32,\n            \"gender\": \"FEMALE\",\n            \"seatPreference\": \"MIDDLE\",\n            \"berthPreference\": \"WINDOW\",\n            \"mealPreference\": \"NON_VEG\"\n        }\n    ],\n    \"bookingType\": \"GENERAL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bookings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking By PNR",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/PNR12345678",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"PNR12345678"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/user/user123?fromDate=2023-01-01&toDate=2023-12-31",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"user",
+								"user123"
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "toDate",
+									"value": "2023-12-31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bookings By Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/status/CONFIRMED",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"status",
+								"CONFIRMED"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get PNR Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/PNR12345678/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"PNR12345678",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/PNR12345678/cancel?reason=Change in travel plans",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"PNR12345678",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "reason",
+									"value": "Change in travel plans"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bookings By Train",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/train/12951?journeyDate=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"train",
+								"12951"
+							],
+							"query": [
+								{
+									"key": "journeyDate",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/train/12951/statistics?journeyDate=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"train",
+								"12951",
+								"statistics"
+							],
+							"query": [
+								{
+									"key": "journeyDate",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check if Booking Cancellable",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/PNR12345678/cancellable",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"PNR12345678",
+								"cancellable"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calculate Refund Amount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/bookings/PNR12345678/refund-amount",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bookings",
+								"PNR12345678",
+								"refund-amount"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Initiate Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookingId\": \"booking123\",\n    \"amount\": 2500.00,\n    \"paymentMethod\": \"CREDIT_CARD\",\n    \"currency\": \"INR\",\n    \"returnUrl\": \"https://example.com/payment-success\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payments/initiate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payments",
+								"initiate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Callback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"transactionId\": \"txn123456\",\n    \"paymentStatus\": \"SUCCESS\",\n    \"paymentDetails\": {\n        \"cardLastFour\": \"4242\",\n        \"paymentGatewayResponse\": \"Payment successful\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payments/callback",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payments",
+								"callback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/payments/txn123456",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payments",
+								"txn123456"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Refund",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookingId\": \"booking123\",\n    \"transactionId\": \"txn123456\",\n    \"amount\": 2200.00,\n    \"reason\": \"Cancellation\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payments/refund",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payments",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Refund Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/payments/refund/ref123456",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payments",
+								"refund",
+								"ref123456"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedules",
+			"item": [
+				{
+					"name": "Get Train Schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/schedules/train/12951",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"schedules",
+								"train",
+								"12951"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Train Schedule By Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/schedules/train/12951/date?date=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"schedules",
+								"train",
+								"12951",
+								"date"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Station Schedule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/schedules/station/CSMT?date=2023-12-25",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"schedules",
+								"station",
+								"CSMT"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2023-12-25"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Train Schedule",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"delayInMinutes\": 30,\n    \"reason\": \"Track maintenance\",\n    \"affectedStations\": [\"CSMT\", \"BCT\", \"NDLS\"],\n    \"notifyPassengers\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/schedules/train/12951",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"schedules",
+								"train",
+								"12951"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Train Delay History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/schedules/train/12951/delays?fromDate=2023-01-01&toDate=2023-12-31",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"schedules",
+								"train",
+								"12951",
+								"delays"
+							],
+							"query": [
+								{
+									"key": "fromDate",
+									"value": "2023-01-01"
+								},
+								{
+									"key": "toDate",
+									"value": "2023-12-31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Train Running Days",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/schedules/train/12951/running-days",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"schedules",
+								"train",
+								"12951",
+								"running-days"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Next Available Date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/schedules/train/12951/next-available",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"schedules",
+								"train",
+								"12951",
+								"next-available"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						},
+						"description": "Get current user profile based on JWT token"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/bookings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"bookings"
+							]
+						},
+						"description": "Get all bookings for current user"
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Preferences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/preferences",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"preferences"
+							]
+						},
+						"description": "Get user preferences for current user"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Zones",
+			"item": [
+				{
+					"name": "Get All Zones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Zone By Code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones/CR",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones",
+								"CR"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Active Zones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones/active",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones",
+								"active"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Zone Stations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones/CR/stations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones",
+								"CR",
+								"stations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Zone Routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones/CR/routes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones",
+								"CR",
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Zone Trains",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones/CR/trains",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones",
+								"CR",
+								"trains"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Zone Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones/CR/statistics",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones",
+								"CR",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Station in Zone",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/zones/CR/stations/CSMT/check",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"zones",
+								"CR",
+								"stations",
+								"CSMT",
+								"check"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		}
+	]
+} 

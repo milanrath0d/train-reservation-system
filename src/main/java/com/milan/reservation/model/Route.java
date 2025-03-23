@@ -5,8 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
 import java.time.LocalTime;
 
 /**
@@ -16,23 +23,30 @@ import java.time.LocalTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "route")
+@Entity
+@Table(name = "routes")
 public class Route {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long trainNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "train_id")
+    private Train train;
 
-    private String stationCode;
-
-    private String stationName;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "station_id")
+    private Station station;
 
     private int distanceFromOrigin;
 
     private LocalTime arrivalTime;
 
-    private int halt;
+    private LocalTime departureTime;
 
     private int sequence;
+
+    @Column(name = "platform_number")
+    private String platformNumber;
 }

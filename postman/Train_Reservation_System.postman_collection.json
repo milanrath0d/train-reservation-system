@@ -1,0 +1,171 @@
+{
+    "info": {
+        "name": "Train Reservation System",
+        "description": "Collection for testing Train Reservation System APIs",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Booking APIs",
+            "item": [
+                {
+                    "name": "Create Booking",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": "{{baseUrl}}/bookings",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"trainNumber\": 12345,\n    \"sourceStation\": \"MUM\",\n    \"destinationStation\": \"DEL\",\n    \"journeyDate\": \"2024-04-01\",\n    \"classCode\": \"2A\",\n    \"passengers\": [\n        {\n            \"name\": \"John Doe\",\n            \"age\": 30,\n            \"gender\": \"MALE\"\n        }\n    ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Get Booking by PNR",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/bookings/{{pnrNumber}}"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Train APIs",
+            "item": [
+                {
+                    "name": "Search Trains",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/trains/search?sourceStation=MUM&destinationStation=DEL&journeyDate=2024-04-01",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["trains", "search"],
+                            "query": [
+                                {
+                                    "key": "sourceStation",
+                                    "value": "MUM"
+                                },
+                                {
+                                    "key": "destinationStation",
+                                    "value": "DEL"
+                                },
+                                {
+                                    "key": "journeyDate",
+                                    "value": "2024-04-01"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Station APIs",
+            "item": [
+                {
+                    "name": "Search Stations",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/stations/search?query=Mumbai",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["stations", "search"],
+                            "query": [
+                                {
+                                    "key": "query",
+                                    "value": "Mumbai"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Schedule APIs",
+            "item": [
+                {
+                    "name": "Get Train Schedule",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/schedules/train/12345"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Fare APIs",
+            "item": [
+                {
+                    "name": "Get Train Fares",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/fares/train/12345?classCode=2A",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["fares", "train", "12345"],
+                            "query": [
+                                {
+                                    "key": "classCode",
+                                    "value": "2A"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User APIs",
+            "item": [
+                {
+                    "name": "Get User Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": "{{baseUrl}}/users/123"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Notification APIs",
+            "item": [
+                {
+                    "name": "Get User Notifications",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/notifications/user/123?unreadOnly=true",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["notifications", "user", "123"],
+                            "query": [
+                                {
+                                    "key": "unreadOnly",
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:8080"
+        }
+    ]
+} 
